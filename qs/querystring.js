@@ -32,12 +32,17 @@ function Querystring(qs) { // optionally pass a querystring to parse
 	}
 }
 
-function Querystring_get(key, default_) {
+function Querystring_get(key, default_, forceInt=false) {
 	// This silly looking line changes UNDEFINED to NULL
 	if (default_ == null) default_ = null;
 	
 	var value=this.params[key]
-	if (value==null) value=default_;
+	if (value==null)
+        value=default_;
+    else if( forceInt ) {
+        value = parseInt(value);
+        if isNaN(value) value=default_;
+    }
 	
 	return value
 }

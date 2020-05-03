@@ -41,7 +41,7 @@ function Querystring_get(key, default_, forceInt=false) {
         value=default_;
     else if( forceInt ) {
         value = parseInt(value);
-        if isNaN(value) value=default_;
+        if( isNaN(value) ) value=default_;
     }
 	
 	return value
